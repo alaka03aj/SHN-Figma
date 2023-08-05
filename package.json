@@ -12,5 +12,8 @@
   "devDependencies": {
     "@figma/plugin-typings": "^1.72.0",
     "typescript": "*"
+  },
+  "dependencies": {
+    "randomcolor": "^0.6.2"
   }
 }

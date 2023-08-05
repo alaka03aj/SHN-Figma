@@ -1,28 +1,20 @@
-// This plugin will open a window to prompt the user to enter a number, and
-// it will then create that many rectangles on the screen.
 
-// This file holds the main code for plugins. Code in this file has access to
-// the *figma document* via the figma global object.
-// You can access browser APIs in the <script> tag inside "ui.html" which has a
-// full browser environment (See https://www.figma.com/plugin-docs/how-plugins-run).
 
-// This shows the HTML page in "ui.html".
 figma.showUI(__html__);
-
-// Calls to "parent.postMessage" from within the HTML page will trigger this
-// callback. The callback will be passed the "pluginMessage" property of the
-// posted message.
-figma.ui.onmessage = msg => {
-  // One way of distinguishing between different types of messages sent from
-  // your HTML page is to use an object with a "type" property like this.
+figma.ui.resize(500, 300);
+figma.ui.onmessage = async msg => {
   if (msg.type === 'create-palette') {
+    // const color: string = randomcolor(); 
+    // console.log(`Random color: ${color}`);
     const nodes: SceneNode[] = [];
-    let val = 0.1;
+    let val = Math.random();
     for (let i = 0; i < msg.count; i++) {
       const rect = figma.createRectangle();
-      rect.x =100*i;
-      val+=0.1;
-      rect.fills = [{type: 'SOLID', color: {r: val, g: val, b: val}}];
+      rect.x = 100 * i;
+      if (val+0.1 > 1) {
+        val = Math.random();
+      }
+      rect.fills = [{ type: 'SOLID', color: { r: Math.random(), g: val, b:  val-0.05} }];
       figma.currentPage.appendChild(rect);
       nodes.push(rect);
     }
@@ -30,7 +22,51 @@ figma.ui.onmessage = msg => {
     figma.viewport.scrollAndZoomIntoView(nodes);
   }
 
-  // Make sure to close the plugin when you're done. Otherwise the plugin will
-  // keep running, which shows the cancel button at the bottom of the screen.
-  figma.closePlugin();
+  if (msg.type === 'cancel') {
+    figma.closePlugin();
+  }
+  
+  if (msg.type === 'increase-font-size') {
+    await processAllTextNodes(node => {
+      (node as TextNode).fontSize += 1;
+    });
+  }
+
+  if (msg.type === 'decrease-font-size') {
+    await processAllTextNodes(node => {
+      (node as TextNode).fontSize -= 1;
+    });
+  }
+  
 };
+
+async function processAllTextNodes(callback: (node: SceneNode) => void): Promise<void> {
+  const allTextNodes: SceneNode[] = [];
+
+  function traverse(node: BaseNode) {
+    if ('type' in node) {
+      if (node.type === 'TEXT') {
+        allTextNodes.push(node);
+      } else if ('children' in node) {
+        for (const child of node.children) {
+          traverse(child);
+        }
+      }
+    }
+  }
+  for (const page of figma.root.children) {
+    traverse(page);
+  }
+
+  const fontPromises: Promise<void>[] = allTextNodes.map(node => figma.loadFontAsync(node.fontName as FontName));
+
+  await Promise.all(fontPromises);
+
+  for (const node of allTextNodes) {
+    callback(node);
+  }
+}
+function randomColor(): string {
+  throw new Error("Function not implemented.");
+}
+
