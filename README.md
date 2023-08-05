@@ -12,12 +12,17 @@ Long Description about project. This project do that. This project is awesome...
 1. Explaining the working of project
 2. Embed video of project demo
 ## Libraries used
-Library Name - Version
+Figma API
 ## How to configure
-Instructions for setting up project
-## How to Run
-1. Clone the repo
-``` 
-git clone <repo url>
+1. Fork the repository
+2. Clone the repository
 ```
-2. Run the "Terminal > Run Build Task..." menu item, then select "npm: watch"
+git clone https://github.com/alaka03aj/SHN-Figma.git
+```
+3. Install all dependencies
+``` 
+npm install
+```
+4. Run the application by "Terminal > Run Build Task..." menu item, then select "npm: watch"
+## How to Run
+Run the "Terminal > Run Build Task..." menu item, then select "npm: watch"
