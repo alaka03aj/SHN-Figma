@@ -1,17 +1,68 @@
-<h2>Rectangle Creator</h2>
-<p>Count: <input id="count" value="5"></p>
-<button id="create">Create</button>
-<button id="cancel">Cancel</button>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    text-align: center;
+  }
+  h2 {
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 30px;
+  }
+  p {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+  }
+  button {
+    margin-top: 16px;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  button:hover {
+    border-color: #999;
+  }
+  button:active {
+    background: #eee;
+  }
+  input {
+    width: 40px;
+    margin-left: 8px;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+  }
+  .btn{
+    margin-top: 6px;
+  }
+</style>
+
+<h2>Color Palette Generator - with Accessibility Generator</h2>
+<p>No. of colors: <input id="count" value="5" /></p>
+<div class="btn">
+  <button id="create">Create</button>
+  <button id="cancel">Cancel</button>
+</div>
 <script>
+  document.getElementById("create").onclick = () => {
+    const textbox = document.getElementById("count");
+    const count = parseInt(textbox.value, 10);
+    parent.postMessage(
+      { pluginMessage: { type: "create-rectangles", count } },
+      "*"
+    );
+  };
 
-document.getElementById('create').onclick = () => {
-  const textbox = document.getElementById('count');
-  const count = parseInt(textbox.value, 10);
-  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
-}
-
-document.getElementById('cancel').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
-}
-
+  document.getElementById("cancel").onclick = () => {
+    parent.postMessage({ pluginMessage: { type: "cancel" } }, "*");
+  };
 </script>
