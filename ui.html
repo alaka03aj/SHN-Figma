@@ -47,7 +47,7 @@
 </style>
 
 <h2>Color Palette Generator - with Accessibility Generator</h2>
-<p>No. of colors: <input id="count" value="5" /></p>
+<p>No. of colors: <input id="count" value="" /></p>
 <div class="btn">
   <button id="create">Create</button>
   <button id="cancel">Cancel</button>
@@ -57,7 +57,7 @@
     const textbox = document.getElementById("count");
     const count = parseInt(textbox.value, 10);
     parent.postMessage(
-      { pluginMessage: { type: "create-rectangles", count } },
+      { pluginMessage: { type: "create-palette", count } },
       "*"
     );
   };

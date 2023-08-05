@@ -15,12 +15,14 @@ figma.showUI(__html__);
 figma.ui.onmessage = msg => {
   // One way of distinguishing between different types of messages sent from
   // your HTML page is to use an object with a "type" property like this.
-  if (msg.type === 'create-rectangles') {
+  if (msg.type === 'create-palette') {
     const nodes: SceneNode[] = [];
+    let val = 0.1;
     for (let i = 0; i < msg.count; i++) {
-      const rect = figma.createEllipse();
-      rect.x = i * 150;
-      rect.fills = [{type: 'SOLID', color: {r: 1, g: 0.5, b: 0}}];
+      const rect = figma.createRectangle();
+      rect.x =100*i;
+      val+=0.1;
+      rect.fills = [{type: 'SOLID', color: {r: val, g: val, b: val}}];
       figma.currentPage.appendChild(rect);
       nodes.push(rect);
     }
