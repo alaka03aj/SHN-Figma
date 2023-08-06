@@ -18,7 +18,7 @@ The Figma Color Palette Plugin with Accessibility and Size Changing Feature is a
 ## Link to product walkthrough
 [link to video](Link Here)
 ## How it Works ?
-1. Explaining the working of project
+1. Random palette is generated using random() function. Font size is changed using evaluating all the elements in the page and changing the font size of the text elements. Cancel button is used to exit from the plugin.
 2. Embed video of project demo
 ## Libraries used
 Figma API
@@ -29,8 +29,13 @@ Figma API
 git clone https://github.com/alaka03aj/SHN-Figma.git
 ```
 3. Install all dependencies
+- install TypeScript using the command:
 ``` 
-npm install
+npm install -g typescript
+```
+- To use latest Figma plugin
+```
+npm install --save-dev @figma/plugin-typings
 ```
 4. Run the application by "Terminal > Run Build Task..." menu item, then select "npm: watch"
 ## How to Run
