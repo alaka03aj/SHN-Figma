@@ -2,9 +2,12 @@
 
 **DostsOfFigma**
 <br>
+<br>
 The Figma Color Palette Plugin with Accessibility and Size Changing Feature is a powerful plugin that allows designers to create and manage color palettes directly within the Figma design tool. The plugin not only enables the easy creation and organization of color palettes but also includes accessibility features to ensure compliance with accessibility guidelines. Additionally, it offers a size changing feature, enabling designers to quickly adjust the size of elements within their design.
 <br>
+<br>
 **Features**
+<br>
 <br>
 1.**Color Palette Creation:** Easily create and manage color palettes within Figma. The plugin provides an intuitive interface to add, remove, and rearrange colors in your palette.
 <br>
