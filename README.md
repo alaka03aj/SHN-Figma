@@ -16,10 +16,10 @@ The Figma Color Palette Plugin with Accessibility and Size Changing Feature is a
 1. [Alaka A J](https://github.com/alaka03aj)
 2. [Ameesha Arackal](https://github.com/AMEESHAARACKAL)
 ## Link to product walkthrough
-[link to video](Link Here)
+[link to video](https://clipchamp.com/watch/y7u5GQfuq5H)
 ## How it Works ?
 1. Random palette is generated using random() function. Font size is changed using evaluating all the elements in the page and changing the font size of the text elements. Cancel button is used to exit from the plugin.
-2. Embed video of project demo
+2. [walkthrough](https://clipchamp.com/watch/y7u5GQfuq5H)
 ## Libraries used
 Figma API
 ## How to configure
