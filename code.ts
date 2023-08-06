@@ -4,17 +4,13 @@ figma.showUI(__html__);
 figma.ui.resize(500, 300);
 figma.ui.onmessage = async msg => {
   if (msg.type === 'create-palette') {
-    // const color: string = randomcolor(); 
-    // console.log(`Random color: ${color}`);
     const nodes: SceneNode[] = [];
-    let val = Math.random();
     for (let i = 0; i < msg.count; i++) {
       const rect = figma.createRectangle();
       rect.x = 100 * i;
-      if (val+0.1 > 1) {
-        val = Math.random();
-      }
-      rect.fills = [{ type: 'SOLID', color: { r: Math.random(), g: val, b:  val-0.05} }];
+      rect.fills = [{ type: 'SOLID', color: { r: Math.random(), g: Math.random(), b:  Math.random()} }];
+      // const colorJson = JSON.stringify(rect.fills);
+      // console.log(`${colorJson}`);
       figma.currentPage.appendChild(rect);
       nodes.push(rect);
     }
