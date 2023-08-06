@@ -29,7 +29,7 @@ Figma API
 git clone https://github.com/alaka03aj/SHN-Figma.git
 ```
 3. Install all dependencies
-- install TypeScript using the command:
+- Install TypeScript using the command:
 ``` 
 npm install -g typescript
 ```
